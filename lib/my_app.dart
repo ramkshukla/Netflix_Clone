@@ -9,12 +9,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/splashscreen',
       routes: {
-        '/splashscreen': (context) => SplashScreen(),
+        '/splashscreen': (context) => const SplashScreen(),
       },
     );
   }
