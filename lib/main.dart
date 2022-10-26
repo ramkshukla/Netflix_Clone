@@ -5,14 +5,16 @@ import 'package:netflix_clone/widgets/trending.dart';
 import 'package:netflix_clone/widgets/tv.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: const Home(),
       theme: ThemeData(brightness: Brightness.dark, primaryColor: Colors.green),
     );
   }
@@ -51,7 +53,7 @@ class _HomeState extends State<Home> {
     Map trendingresult = await tmdbWithCustomLogs.v3.trending.getTrending();
     Map topratedresult = await tmdbWithCustomLogs.v3.movies.getTopRated();
     Map tvresult = await tmdbWithCustomLogs.v3.tv.getPouplar();
-    print((trendingresult));
+    debugPrint(trendingresult.toString());
     setState(() {
       trendingmovies = trendingresult['results'];
       topratedmovies = topratedresult['results'];

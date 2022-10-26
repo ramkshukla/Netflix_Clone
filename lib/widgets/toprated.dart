@@ -9,22 +9,22 @@ class TopRatedMovies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          modified_text(
+          const modified_text(
             text: 'Top Rated Movies',
             size: 26,
           ),
-          SizedBox(height: 10),
-          Container(
+          const SizedBox(height: 10),
+          SizedBox(
               height: 270,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: toprated.length,
                   itemBuilder: (context, index) {
-                    return Container(
+                    return SizedBox(
                       width: 140,
                       child: Column(
                         children: [
@@ -38,14 +38,12 @@ class TopRatedMovies extends StatelessWidget {
                             ),
                             height: 200,
                           ),
-                          SizedBox(height: 5),
-                          Container(
-                            child: modified_text(
-                                size: 15,
-                                text: toprated[index]['title'] != null
-                                    ? toprated[index]['title']
-                                    : 'Loading'),
-                          )
+                          const SizedBox(height: 5),
+                          modified_text(
+                              size: 15,
+                              text: toprated[index]['title'] != null
+                                  ? toprated[index]['title']
+                                  : 'Loading')
                         ],
                       ),
                     );

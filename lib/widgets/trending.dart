@@ -10,16 +10,16 @@ class TrendingMovies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          modified_text(
+          const modified_text(
             text: 'Trending Movies',
             size: 26,
           ),
-          SizedBox(height: 10),
-          Container(
+          const SizedBox(height: 10),
+          SizedBox(
               height: 270,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -41,11 +41,10 @@ class TrendingMovies extends StatelessWidget {
                                       description: trending[index]['overview'],
                                       vote: trending[index]['vote_average']
                                           .toString(),
-                                      launch_on: trending[index]
-                                          ['release_date'],
+                                      launchon: trending[index]['release_date'],
                                     )));
                       },
-                      child: Container(
+                      child: SizedBox(
                         width: 140,
                         child: Column(
                           children: [
@@ -59,14 +58,12 @@ class TrendingMovies extends StatelessWidget {
                               ),
                               height: 200,
                             ),
-                            SizedBox(height: 5),
-                            Container(
-                              child: modified_text(
-                                  size: 15,
-                                  text: trending[index]['title'] != null
-                                      ? trending[index]['title']
-                                      : 'Loading'),
-                            )
+                            const SizedBox(height: 5),
+                            modified_text(
+                                size: 15,
+                                text: trending[index]['title'] != null
+                                    ? trending[index]['title']
+                                    : 'Loading')
                           ],
                         ),
                       ),
