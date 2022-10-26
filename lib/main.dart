@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
     Map trendingresult = await tmdbWithCustomLogs.v3.trending.getTrending();
     Map topratedresult = await tmdbWithCustomLogs.v3.movies.getTopRated();
     Map tvresult = await tmdbWithCustomLogs.v3.tv.getPouplar();
-    debugPrint(trendingresult.toString());
+    debugPrint(topratedresult.toString());
     setState(() {
       trendingmovies = trendingresult['results'];
       topratedmovies = topratedresult['results'];
@@ -64,21 +64,24 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(
-          title: modified_text(text: 'Flutter Movie App ❤️'),
-          backgroundColor: Colors.transparent,
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: const modified_text(
+          text: 'Flutter Movie App ',
         ),
-        body: ListView(
-          children: [
-            TV(tv: tv),
-            TrendingMovies(
-              trending: trendingmovies,
-            ),
-            TopRatedMovies(
-              toprated: topratedmovies,
-            ),
-          ],
-        ));
+        backgroundColor: Colors.transparent,
+      ),
+      body: ListView(
+        children: [
+          TV(tv: tv),
+          TrendingMovies(
+            trending: trendingmovies,
+          ),
+          TopRatedMovies(
+            toprated: topratedmovies,
+          ),
+        ],
+      ),
+    );
   }
 }

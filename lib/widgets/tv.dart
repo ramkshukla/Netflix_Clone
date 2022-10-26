@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../description.dart';
 import '../utils/text.dart';
 
 class TV extends StatelessWidget {
@@ -25,30 +26,49 @@ class TV extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: tv.length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      padding: const EdgeInsets.all(5),
-                      // color: Colors.green,
-                      width: 250,
-                      child: Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                  image: NetworkImage(
-                                      'https://image.tmdb.org/t/p/w500' +
-                                          tv[index]['backdrop_path']),
-                                  fit: BoxFit.cover),
+                    return InkWell(
+                      onTap: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Description(
+                              name: tv[index]['original_name'],
+                              bannerurl: 'https://image.tmdb.org/t/p/w500' +
+                                  tv[index]['backdrop_path'],
+                              posterurl: 'https://image.tmdb.org/t/p/w500' +
+                                  tv[index]['poster_path'],
+                              description: tv[index]['overview'],
+                              vote: tv[index]['vote_average'].toString(),
+                              launchon: "02-02-2022",
                             ),
-                            height: 140,
                           ),
-                          const SizedBox(height: 5),
-                          modified_text(
-                              size: 15,
-                              text: tv[index]['original_name'] != null
-                                  ? tv[index]['original_name']
-                                  : 'Loading')
-                        ],
+                        )
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(5),
+                        // color: Colors.green,
+                        width: 250,
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: NetworkImage(
+                                        'https://image.tmdb.org/t/p/w500' +
+                                            tv[index]['backdrop_path']),
+                                    fit: BoxFit.cover),
+                              ),
+                              height: 140,
+                            ),
+                            const SizedBox(height: 5),
+                            modified_text(
+                                size: 15,
+                                text: tv[index]['original_name'] != null
+                                    ? tv[index]['original_name']
+                                    : 'Loading')
+                          ],
+                        ),
                       ),
                     );
                   }))

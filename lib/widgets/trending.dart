@@ -28,21 +28,20 @@ class TrendingMovies extends StatelessWidget {
                     return InkWell(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Description(
-                                      name: trending[index]['title'],
-                                      bannerurl:
-                                          'https://image.tmdb.org/t/p/w500' +
-                                              trending[index]['backdrop_path'],
-                                      posterurl:
-                                          'https://image.tmdb.org/t/p/w500' +
-                                              trending[index]['poster_path'],
-                                      description: trending[index]['overview'],
-                                      vote: trending[index]['vote_average']
-                                          .toString(),
-                                      launchon: trending[index]['release_date'],
-                                    )));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Description(
+                              name: trending[index]['title'],
+                              bannerurl: 'https://image.tmdb.org/t/p/w500' +
+                                  trending[index]['backdrop_path'],
+                              posterurl: 'https://image.tmdb.org/t/p/w500' +
+                                  trending[index]['poster_path'],
+                              description: trending[index]['overview'],
+                              vote: trending[index]['vote_average'].toString(),
+                              launchon: trending[index]['release_date'],
+                            ),
+                          ),
+                        );
                       },
                       child: SizedBox(
                         width: 140,
